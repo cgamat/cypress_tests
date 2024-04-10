@@ -7,4 +7,13 @@ describe('template spec', () => {
     cy.get('.fa').click()
     cy.get('#flash').contains("You logged into a secure area")
   })
+
+  it('test de login con el usuario invalido', () => {
+    cy.visit('https://the-internet.herokuapp.com/')
+    cy.get(':nth-child(21) > a').click()
+    cy.get('#username').type("pepito")
+    cy.get('#password').type("SuperSecretPassword!")
+    cy.get('.fa').click()
+    cy.get('#flash').contains("Your username is invalid")
+})
 })
